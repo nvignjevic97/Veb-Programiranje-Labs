@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html><html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User orders</title>
+</head>
+<body>
+<form th:method="post" th:action="@{/userOrders}">
+    <label for="clientName">Client name:</label>
+    <input type="text" name="client-name" id="clientName">
+    <br>
+    <label for="clientAddress">Client address:</label>
+    <input type="text" name="client-address" id="clientAddress">
+    <input type="submit" value="Submit">
+</form>
+<h3>Orders:</h3>
+<table>
+    <thead>
+    <tr>
+        <th scope="col">Color</th>
+        <th scope="col">Client</th>
+        <th scope="col">Address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.getBalloonColor()}"></td>
+        <td th:text="${order.getClientName()}"></td>
+        <td th:text="${order.getClientAddress()}"></td>
+    </tr>
+    </tbody>
+
+</table>
+
+
+</body>
+</html>
